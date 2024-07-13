@@ -1,0 +1,13 @@
+---
+- name: Curl a URL on Kubernetes Master
+  hosts: worker
+  become: yes  
+
+  tasks:
+    - name: Curl the URL
+      command: curl http://135.237.121.44:30080
+      register: curl_response  
+
+    - name: Print curl response
+      debug:
+        var: curl_response.stdout 
